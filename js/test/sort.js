@@ -41,4 +41,16 @@ describe('Sort', function() {
       })
     })
   })
+
+  describe('Merge', function() {
+    it('Should return sorted result', function() {
+      var sort = require('../sort/merge')
+      var result = sort(testData.map(function(i) {
+        return i
+      }))
+      exceptData.forEach(function(data, i) {
+        assert.equal(data, result[i])
+      })
+    })
+  })
 })
