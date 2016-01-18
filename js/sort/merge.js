@@ -14,14 +14,14 @@ var mergeSort = function(arr) {
         rightArr.shift()
       }
     }
-
-    return mergeResult.concat(leftArr.concat(rightArr))
+    var result = mergeResult.concat(leftArr.concat(rightArr))
+    return result
   }
 
   if(arr.length<2)
-    return
+    return arr
 
-  var midIndex = parseInt((arr.length-1) / 2)
+  var midIndex = parseInt(arr.length / 2)
   var left = arr.slice(0, midIndex)
   var right = arr.slice(midIndex)
   console.log(left,right)
@@ -29,6 +29,5 @@ var mergeSort = function(arr) {
   return merge(mergeSort(left), mergeSort(right))
 }
 
-console.log(mergeSort([3,2,5]))
 
 module.exports = mergeSort
