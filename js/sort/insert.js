@@ -16,7 +16,7 @@ var insertSort = function(arr) {
         break
       }
       //如果所有项都比目标项小, 插入到数组顶端
-      if(targetItem < compareItem && i == 0){
+      if(i == 0){
         arr.splice(startIndex, 1)
         arr.unshift(targetItem)
       }

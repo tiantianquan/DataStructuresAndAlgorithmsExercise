@@ -16,12 +16,22 @@ var quickSort = function(arr, random) {
   var pivot
   if(random) {
     var pivotList = [arr[0], arr[parseInt(arr.length / 2)], arr[arr.length - 1]]
-    pivotList.sort(function(a, b) {
-      return a - b
-    })
-
-
-    pivot = pivotList[1]
+      // pivotList.sort(function(a, b) {
+      //   return a - b
+      // })
+    if(pivotList[0] > pivotList[1]) {
+      if(pivotList[0] > pivotList[2]) {
+        pivot = pivotList[1] > pivotList[2] ? pivotList[1] : pivotList[2]
+      } else {
+        pivot = pivotList[0]
+      }
+    } else {
+      if(pivotList[0] < pivotList[2]) {
+        pivot = pivotList[1] > pivotList[2] ? pivotList[2] : pivotList[1]
+      } else {
+        pivot = pivot[0]
+      }
+    }
   } else {
     pivot = arr[0]
   }

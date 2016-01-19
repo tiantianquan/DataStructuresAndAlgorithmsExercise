@@ -1,10 +1,10 @@
 def bubbleSort(arr):
     global swapFlag
     swapFlag = True
-    lastIndex = len(arr) - 1
+    lastIndex = len(arr)
     while swapFlag:
         swapFlag = False
-        for i in range(0, lastIndex):
+        for i in range(0, lastIndex-1):
             if arr[i + 1] < arr[i]:
                 tmp = arr[i]
                 arr[i] = arr[i + 1]
