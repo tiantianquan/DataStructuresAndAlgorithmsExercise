@@ -24,7 +24,7 @@ var mergeSort = function(arr) {
   var midIndex = parseInt(arr.length / 2)
   var left = arr.slice(0, midIndex)
   var right = arr.slice(midIndex)
-  console.log(left,right)
+  // console.log(left,right)
 
   return merge(mergeSort(left), mergeSort(right))
 }
