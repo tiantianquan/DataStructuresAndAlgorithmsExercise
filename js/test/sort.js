@@ -5,8 +5,8 @@ describe('Sort', function() {
   this.timeout(100000)
   // var testData = [3, 44, 38, 5, 47, 15, 36, 26, 27, 2, 46, 4, 19, 50, 48]
   var testData = []
-  for(var i =0;i<10000;i++){
-    testData.push(Math.random()*10000)
+  for(var i =0;i<1000;i++){
+    testData.push(Math.random()*1000)
   }
   var exceptData = testData.map(function(i) {
     return i
