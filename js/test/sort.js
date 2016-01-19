@@ -2,6 +2,7 @@ var assert = require('assert')
 
 describe('Sort', function() {
   this.slow(-100)
+  this.timeout(100000)
   // var testData = [3, 44, 38, 5, 47, 15, 36, 26, 27, 2, 46, 4, 19, 50, 48]
   var testData = []
   for(var i =0;i<10000;i++){
@@ -66,6 +67,15 @@ describe('Sort', function() {
       var result = sort(testData.map(function(i) {
         return i
       }))
+      exceptData.forEach(function(data, i) {
+        assert.equal(data, result[i])
+      })
+    })
+    it('Should return sorted result', function() {
+      var sort = require('../sort/quick')
+      var result = sort(testData.map(function(i) {
+        return i
+      }),true)
       exceptData.forEach(function(data, i) {
         assert.equal(data, result[i])
       })
