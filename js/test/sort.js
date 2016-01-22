@@ -5,7 +5,7 @@ describe('Sort', function() {
   this.timeout(100000)
   // var testData = [3, 44, 38, 5, 47, 15, 36, 26, 27, 2, 46, 4, 19, 50, 48]
   var testData = []
-  for(var i =0;i<1000;i++){
+  for(var i =0;i<100000;i++){
     testData.push(Math.random()*1000)
   }
   var exceptData = testData.map(function(i) {
@@ -14,7 +14,7 @@ describe('Sort', function() {
     return a - b
   })
 
-  describe('Bubble', function() {
+  describe.skip('Bubble', function() {
     it('Should return sorted result', function() {
       var sort = require('../sort/bubble')
       var result = sort(testData.map(function(i) {
@@ -26,7 +26,7 @@ describe('Sort', function() {
     })
   })
 
-  describe('Select', function() {
+  describe.skip('Select', function() {
     it('Should return sorted result', function() {
       var sort = require('../sort/select')
       var result = sort(testData.map(function(i) {
@@ -37,7 +37,7 @@ describe('Sort', function() {
       })
     })
   })
-  describe('Insert', function() {
+  describe.skip('Insert', function() {
     it('Should return sorted result', function() {
       var sort = require('../sort/insert')
       var result = sort(testData.map(function(i) {
@@ -49,7 +49,7 @@ describe('Sort', function() {
     })
   })
 
-  describe('Merge', function() {
+  describe.skip('Merge', function() {
     it('Should return sorted result', function() {
       var sort = require('../sort/merge')
       var result = sort(testData.map(function(i) {
