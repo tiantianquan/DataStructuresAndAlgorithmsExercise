@@ -7,19 +7,16 @@ var AvlTreeNode = function(val) {
   this.rightChild = null
   this.height = 0
 
-
 }
-
 
 AvlTreeNode.prototype.nullHeight = function(node) {
-  return node === null ? -1 : node.height
+  return node === null
+    ? -1
+    : node.height
 }
 
-
 AvlTreeNode.prototype.setHeight = function() {
-  this.height = Math.max(
-    this.nullHeight(this.leftChild),
-    this.nullHeight(this.rightChild)) + 1
+  this.height = Math.max(this.nullHeight(this.leftChild), this.nullHeight(this.rightChild)) + 1
 }
 
 AvlTreeNode.prototype.getLeftRightGap = function() {
@@ -39,7 +36,7 @@ AvlTreeNode.rotateLeft = function(node) {
 
   node.setHeight()
   toTopNode.setHeight()
-  if(changeNode) {
+  if (changeNode) {
     changeNode.setHeight()
   }
   return toTopNode
@@ -56,7 +53,7 @@ AvlTreeNode.rotateRight = function(node) {
 
   node.setHeight()
   toTopNode.setHeight()
-  if(changeNode) {
+  if (changeNode) {
     changeNode.setHeight()
   }
   return toTopNode
@@ -66,6 +63,33 @@ AvlTreeNode.prototype.insert = function(newNode) {
   return AvlTreeNode.insert(newNode, this)
 }
 
+AvlTreeNode.prototype.findMin = function() {
+  var minNode = this
+  innerFn(minNode)
+  return minNode
+
+  function innerFn(node) {
+    if (node.leftChild === null) {
+      return
+    }
+    minNode = node.leftChild
+    innerFn(minNode)
+  }
+}
+
+AvlTreeNode.prototype.findMax = function() {
+  var maxNode = this
+  innerFn(maxNode)
+  return maxNode
+
+  function innerFn(node) {
+    if (node.rightChild === null) {
+      return
+    }
+    maxNode = node.rightChild
+    innerFn(maxNode)
+  }
+}
 
 AvlTreeNode.insert = function(newNode, node) {
   /**
@@ -78,44 +102,40 @@ AvlTreeNode.insert = function(newNode, node) {
 
   innerInsert(newNode, node)
 
-
   function innerInsert(newNode, node) {
-    if(newNode.val > node.val) {
-      if(node.rightChild !== null) {
+    if (newNode.val > node.val) {
+      if (node.rightChild !== null) {
         innerInsert(newNode, node.rightChild)
       } else {
         node.rightChild = newNode
       }
-      if(rotateFlag) {
+      if (rotateFlag) {
         node.rightChild = tmpNode
       }
 
-    } else if(newNode.val < node.val) {
-      if(node.leftChild !== null) {
+    } else if (newNode.val < node.val) {
+      if (node.leftChild !== null) {
         innerInsert(newNode, node.leftChild)
       } else {
         node.leftChild = newNode
       }
-      if(rotateFlag) {
+      if (rotateFlag) {
         node.leftChild = tmpNode
       }
     }
 
-
     var gap = node.getLeftRightGap()
-      //rotate left
-    if(gap === -2) {
-      if(newNode.val > node.rightChild.val) {
+    //rotate left
+    if (gap === -2) {
+      if (newNode.val > node.rightChild.val) {
         tmpNode = AvlTreeNode.rotateLeft(node)
       } else {
         node.rightChild = AvlTreeNode.rotateRight(node.rightChild)
         tmpNode = AvlTreeNode.rotateLeft(node)
       }
       rotateFlag = true
-    }
-    //rotate right
-    else if(gap === 2) {
-      if(newNode.val < node.leftChild.val) {
+    } else if (gap === 2) {
+      if (newNode.val < node.leftChild.val) {
         tmpNode = AvlTreeNode.rotateRight(node)
       } else {
         node.leftChild = AvlTreeNode.rotateLeft(node.leftChild)
@@ -127,9 +147,9 @@ AvlTreeNode.insert = function(newNode, node) {
       node.setHeight()
     }
 
-    if(node.height > initHeight) {
+    if (node.height > initHeight) {
       topNode = node
-    } else if(node.height == initHeight) {
+    } else if (node.height == initHeight) {
       topNode = node
     }
   }
